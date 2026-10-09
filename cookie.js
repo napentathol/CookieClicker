@@ -28,407 +28,417 @@
     const PRISM = 'Prism';
     const CHANCE = 'Chancemaker';
 
-    const DOUBLE_UPGRADES = {
-        'Reinforced index finger' : CURSOR,
-        'Carpal tunnel prevention cream' : CURSOR,
-        'Ambidextrous' : CURSOR,
+    const UPGRADES = {
+        cookies: {
+            f_calculate: calculateCookieUpgradeCps,
+        },
+        double: {
+            f_calculate: calculateDoubleUpgradeCps,
+            'Reinforced index finger' : CURSOR,
+            'Carpal tunnel prevention cream' : CURSOR,
+            'Ambidextrous' : CURSOR,
 
-        'Forwards from grandma' : GRANDMA,
-        'Steel-plated rolling pins' : GRANDMA,
-        'Lubricated dentures' : GRANDMA,
-        'Prune juice' : GRANDMA,
-        'Double-thick glasses' : GRANDMA,
-        'Aging agents' : GRANDMA,
-        'Xtreme walkers' : GRANDMA,
-        'The unbridling' : GRANDMA,
-        'Reverse dementia' : GRANDMA,
-        'Ritual rolling pins' : GRANDMA,
-        'Naughty list' : GRANDMA,
+            'Forwards from grandma' : GRANDMA,
+            'Steel-plated rolling pins' : GRANDMA,
+            'Lubricated dentures' : GRANDMA,
+            'Prune juice' : GRANDMA,
+            'Double-thick glasses' : GRANDMA,
+            'Aging agents' : GRANDMA,
+            'Xtreme walkers' : GRANDMA,
+            'The unbridling' : GRANDMA,
+            'Reverse dementia' : GRANDMA,
+            'Ritual rolling pins' : GRANDMA,
+            'Naughty list' : GRANDMA,
 
-        'Cheap hoes' : FARM,
-        'Fertilizer' : FARM,
-        'Cookie trees' : FARM,
-        'Genetically-modified cookies' : FARM,
-        'Gingerbread scarecrows' : FARM,
-        'Pulsar sprinklers' : FARM,
-        'Fudge fungus' : FARM,
-        'Wheat triffids' : FARM,
-        'Humane pesticides' : FARM,
+            'Cheap hoes' : FARM,
+            'Fertilizer' : FARM,
+            'Cookie trees' : FARM,
+            'Genetically-modified cookies' : FARM,
+            'Gingerbread scarecrows' : FARM,
+            'Pulsar sprinklers' : FARM,
+            'Fudge fungus' : FARM,
+            'Wheat triffids' : FARM,
+            'Humane pesticides' : FARM,
 
-        'Sugar gas' : MINE,
-        'Megadrill' : MINE,
-        'Ultradrill' : MINE,
-        'Ultimadrill' : MINE,
-        'H-bomb mining' : MINE,
-        'Coreforge' : MINE,
-        'Planetsplitters' : MINE,
-        'Canola oil wells' : MINE,
-        'Mole people' : MINE,
+            'Sugar gas' : MINE,
+            'Megadrill' : MINE,
+            'Ultradrill' : MINE,
+            'Ultimadrill' : MINE,
+            'H-bomb mining' : MINE,
+            'Coreforge' : MINE,
+            'Planetsplitters' : MINE,
+            'Canola oil wells' : MINE,
+            'Mole people' : MINE,
 
-        'Sturdier conveyor belts' : FACTORY,
-        'Child labor' : FACTORY,
-        'Sweatshop' : FACTORY,
-        'Radium reactors' : FACTORY,
-        'Recombobulators' : FACTORY,
-        'Deep-bake process' : FACTORY,
-        'Cyborg workforce' : FACTORY,
-        '78-hour days' : FACTORY,
-        'Machine learning' : FACTORY,
+            'Sturdier conveyor belts' : FACTORY,
+            'Child labor' : FACTORY,
+            'Sweatshop' : FACTORY,
+            'Radium reactors' : FACTORY,
+            'Recombobulators' : FACTORY,
+            'Deep-bake process' : FACTORY,
+            'Cyborg workforce' : FACTORY,
+            '78-hour days' : FACTORY,
+            'Machine learning' : FACTORY,
 
-        'Taller tellers' : BANK,
-        'Scissor-resistant credit cards' : BANK,
-        'Acid-proof vaults' : BANK,
-        'Chocolate coins' : BANK,
-        'Exponential interest rates' : BANK,
-        'Financial zen' : BANK,
-        'Way of the wallet' : BANK,
-        'The stuff rationale' : BANK,
-        'Edible money' : BANK,
+            'Taller tellers' : BANK,
+            'Scissor-resistant credit cards' : BANK,
+            'Acid-proof vaults' : BANK,
+            'Chocolate coins' : BANK,
+            'Exponential interest rates' : BANK,
+            'Financial zen' : BANK,
+            'Way of the wallet' : BANK,
+            'The stuff rationale' : BANK,
+            'Edible money' : BANK,
 
-        'Golden idols' : TEMPLE,
-        'Sacrifices' : TEMPLE,
-        'Delicious blessing' : TEMPLE,
-        'Sun festival' : TEMPLE,
-        'Enlarged pantheon' : TEMPLE,
-        'Great Baker in the sky' : TEMPLE,
-        'Creation myth' : TEMPLE,
-        'Theocracy' : TEMPLE,
-        'Sick rap prayers' : TEMPLE,
+            'Golden idols' : TEMPLE,
+            'Sacrifices' : TEMPLE,
+            'Delicious blessing' : TEMPLE,
+            'Sun festival' : TEMPLE,
+            'Enlarged pantheon' : TEMPLE,
+            'Great Baker in the sky' : TEMPLE,
+            'Creation myth' : TEMPLE,
+            'Theocracy' : TEMPLE,
+            'Sick rap prayers' : TEMPLE,
 
-        'Pointier hats' : WIZARD,
-        'Beardlier beards' : WIZARD,
-        'Ancient grimoires' : WIZARD,
-        'Kitchen curses' : WIZARD,
-        'School of sorcery' : WIZARD,
-        'Dark formulas' : WIZARD,
-        'Cookiemancy' : WIZARD,
-        'Rabbit trick' : WIZARD,
-        'Deluxe tailored wands' : WIZARD,
+            'Pointier hats' : WIZARD,
+            'Beardlier beards' : WIZARD,
+            'Ancient grimoires' : WIZARD,
+            'Kitchen curses' : WIZARD,
+            'School of sorcery' : WIZARD,
+            'Dark formulas' : WIZARD,
+            'Cookiemancy' : WIZARD,
+            'Rabbit trick' : WIZARD,
+            'Deluxe tailored wands' : WIZARD,
 
-        'Vanilla nebulae' : SHIPMENT,
-        'Wormholes' : SHIPMENT,
-        'Frequent flyer' : SHIPMENT,
-        'Warp drive' : SHIPMENT,
-        'Chocolate monoliths' : SHIPMENT,
-        'Generation ship' : SHIPMENT,
-        'Dyson sphere' : SHIPMENT,
-        'The final frontier' : SHIPMENT,
-        'Autopilot' : SHIPMENT,
+            'Vanilla nebulae' : SHIPMENT,
+            'Wormholes' : SHIPMENT,
+            'Frequent flyer' : SHIPMENT,
+            'Warp drive' : SHIPMENT,
+            'Chocolate monoliths' : SHIPMENT,
+            'Generation ship' : SHIPMENT,
+            'Dyson sphere' : SHIPMENT,
+            'The final frontier' : SHIPMENT,
+            'Autopilot' : SHIPMENT,
 
-        'Antimony' : ALCHEMY,
-        'Essence of dough' : ALCHEMY,
-        'True chocolate' : ALCHEMY,
-        'Ambrosia' : ALCHEMY,
-        'Aqua crustulae' : ALCHEMY,
-        'Origin crucible' : ALCHEMY,
-        'Theory of atomic fluidity' : ALCHEMY,
-        'Beige goo' : ALCHEMY,
-        'The advent of chemistry' : ALCHEMY,
+            'Antimony' : ALCHEMY,
+            'Essence of dough' : ALCHEMY,
+            'True chocolate' : ALCHEMY,
+            'Ambrosia' : ALCHEMY,
+            'Aqua crustulae' : ALCHEMY,
+            'Origin crucible' : ALCHEMY,
+            'Theory of atomic fluidity' : ALCHEMY,
+            'Beige goo' : ALCHEMY,
+            'The advent of chemistry' : ALCHEMY,
 
-        'Ancient tablet' : PORTAL,
-        'Insane oatling workers' : PORTAL,
-        'Soul bond' : PORTAL,
-        'Sanity dance' : PORTAL,
-        'Brane transplant' : PORTAL,
-        'Deity-sized portals' : PORTAL,
-        'End of times back-up plan' : PORTAL,
-        'Maddening chants' : PORTAL,
-        'The real world' : PORTAL,
+            'Ancient tablet' : PORTAL,
+            'Insane oatling workers' : PORTAL,
+            'Soul bond' : PORTAL,
+            'Sanity dance' : PORTAL,
+            'Brane transplant' : PORTAL,
+            'Deity-sized portals' : PORTAL,
+            'End of times back-up plan' : PORTAL,
+            'Maddening chants' : PORTAL,
+            'The real world' : PORTAL,
 
-        'Flux capacitors' : TIME,
-        'Time paradox resolver' : TIME,
-        'Quantum conundrum' : TIME,
-        'Causality enforcer' : TIME,
-        'Yestermorrow comparators' : TIME,
-        'Far future enactment' : TIME,
-        'Great loop hypothesis' : TIME,
-        'Cookietopian moments of maybe' : TIME,
-        'Second seconds' : TIME,
+            'Flux capacitors' : TIME,
+            'Time paradox resolver' : TIME,
+            'Quantum conundrum' : TIME,
+            'Causality enforcer' : TIME,
+            'Yestermorrow comparators' : TIME,
+            'Far future enactment' : TIME,
+            'Great loop hypothesis' : TIME,
+            'Cookietopian moments of maybe' : TIME,
+            'Second seconds' : TIME,
 
-        'Sugar bosons' : ANTI,
-        'String theory' : ANTI,
-        'Large macaron collider' : ANTI,
-        'Big bang bake' : ANTI,
-        'Reverse cyclotrons' : ANTI,
-        'Nanocosmics' : ANTI,
-        'The Pulse' : ANTI,
-        'Some other super-tiny fundamental particle? Probably?' : ANTI,
-        'Quantum comb' : ANTI,
+            'Sugar bosons' : ANTI,
+            'String theory' : ANTI,
+            'Large macaron collider' : ANTI,
+            'Big bang bake' : ANTI,
+            'Reverse cyclotrons' : ANTI,
+            'Nanocosmics' : ANTI,
+            'The Pulse' : ANTI,
+            'Some other super-tiny fundamental particle? Probably?' : ANTI,
+            'Quantum comb' : ANTI,
 
-        'Gem polish' : PRISM,
-        '9th color' : PRISM,
-        'Chocolate light' : PRISM,
-        'Grainbow' : PRISM,
-        'Pure cosmic light' : PRISM,
-        'Glow-in-the-dark' : PRISM,
-        'Lux sanctorum' : PRISM,
-        'Reverse shadows' : PRISM,
-        'Crystal mirrors' : PRISM,
+            'Gem polish' : PRISM,
+            '9th color' : PRISM,
+            'Chocolate light' : PRISM,
+            'Grainbow' : PRISM,
+            'Pure cosmic light' : PRISM,
+            'Glow-in-the-dark' : PRISM,
+            'Lux sanctorum' : PRISM,
+            'Reverse shadows' : PRISM,
+            'Crystal mirrors' : PRISM,
 
-        'Your lucky cookie' : CHANCE,
-        '"All Bets Are Off" magic coin' : CHANCE,
-        'Winning lottery ticket' : CHANCE,
-        'Four-leaf clover field' : CHANCE,
-        'A recipe book about books' : CHANCE,
-        'Leprechaun village' : CHANCE,
-        'Improbability drive' : CHANCE,
-        'Antisuperstistronics' : CHANCE,
-        'Bunnypedes' : CHANCE
-    };
+            'Your lucky cookie' : CHANCE,
+            '"All Bets Are Off" magic coin' : CHANCE,
+            'Winning lottery ticket' : CHANCE,
+            'Four-leaf clover field' : CHANCE,
+            'A recipe book about books' : CHANCE,
+            'Leprechaun village' : CHANCE,
+            'Improbability drive' : CHANCE,
+            'Antisuperstistronics' : CHANCE,
+            'Bunnypedes' : CHANCE
+        },
+        multiplier: {
+            f_calculate: calculateMultiplierCps,
+            'Bingo center/Research facility': {
+                base : GRANDMA,
+                multiplier : 4
+            },
+        },
+        heavenly: {
+            f_calculate: calculateHeavenlyUpgradeCps,
+            'Heavenly chip secret' : 0.05,
+            'Heavenly cookie stand' : 0.2,
+            'Heavenly bakery' : 0.25,
+            'Heavenly confectionery' : 0.25,
+            'Heavenly key' : 0.25,
+        },
+        cursor: {
+            f_calculate: calculateCursorUpgradeCps,
+            'Thousand fingers' : 0.1,
+            'Million fingers' : 0.5,
+            'Billion fingers' : 5,
+            'Trillion fingers' : 50,
+            'Quadrillion fingers' : 500,
+            'Quintillion fingers' : 5000,
+            'Sextillion fingers' : 50000,
+            'Septillion fingers' : 500000,
+            'Octillion fingers' : 5000000,
+        },
+        grandma: {
+            f_calculate: calculateGrandmaUpgradeCps,
+            'Farmer grandmas' : {
+                gma_count: 1,
+                building: FARM
+            },
+            'Miner grandmas' : {
+                gma_count: 2,
+                building: MINE
+            },
+            'Worker grandmas' : {
+                gma_count: 3,
+                building: FACTORY
+            },
+            'Banker grandmas' : {
+                gma_count: 4,
+                building: BANK
+            },
+            'Priestess grandmas' : {
+                gma_count: 5,
+                building: TEMPLE
+            },
+            'Witch grandmas' : {
+                gma_count: 6,
+                building: WIZARD
+            },
+            'Cosmic grandmas' : {
+                gma_count: 7,
+                building: SHIPMENT
+            },
+            'Transmuted grandmas' : {
+                gma_count: 8,
+                building: ALCHEMY
+            },
+            'Altered grandmas' : {
+                gma_count: 9,
+                building: PORTAL
+            },
+            'Grandmas\' grandmas' : {
+                gma_count: 10,
+                building: TIME
+            },
+            'Antigrandmas' : {
+                gma_count: 11,
+                building: ANTI
+            },
+            'Rainbow grandmas' : {
+                gma_count: 12,
+                building: PRISM
+            },
+            'Lucky grandmas' : {
+                gma_count: 13,
+                building: CHANCE
+            },
+        },
+        kitten: {
+            f_calculate: calculateKittenUpgradeCps,
+            'Kitten helpers' : 0.1,
+            'Kitten workers' : 0.125,
+            'Kitten engineers' : 0.15,
+            'Kitten overseers' : 0.175,
+            'Kitten managers' : 0.2,
+            'Kitten accountants' : 0.2,
+            'Kitten specialists' : 0.2,
+            'Kitten experts' : 0.2,
+            'Kitten consultants' : 0.2,
+            'Kitten assistants to the regional manager' : 0.2,
+        },
+        production: {
+            f_calculate: calculateProductionUpgradeCps,
+            'Specialized chocolate chips' : 0.01,
+            'Designer cocoa beans' : 0.02,
+            'Underworld ovens' : 0.03,
+            'Exotic nuts' : 0.04,
+            // EASTER EGGS
+            'Chicken egg' : 0.01,
+            'Duck egg' : 0.01,
+            'Turkey egg' : 0.01,
+            'Quail egg' : 0.01,
+            'Robin egg' : 0.01,
+            'Ostrich egg' : 0.01,
+            'Cassowary egg' : 0.01,
+            'Salmon roe' : 0.01,
+            'Frogspawn' : 0.01,
+            'Shark egg' : 0.01,
+            'Turtle egg' : 0.01,
+            'Ant larva' : 0.01,
+        },
+        synergy: {
+            f_calculate: calculateSynergyUpgradeCps,
+            'Future almanacs' : {
+                base : FARM,
+                synergy : TIME
+            },
+            'Rain prayer' : {
+                base : FARM,
+                synergy : TEMPLE
+            },
+            'Seismic magic' : {
+                base : MINE,
+                synergy : WIZARD
+            },
+            'Asteroid mining' : {
+                base : MINE,
+                synergy : SHIPMENT
+            },
+            'Quantum electronics' : {
+                base : FACTORY,
+                synergy : ANTI
+            },
+            'Temporal overclocking' : {
+                base : FACTORY,
+                synergy : TIME
+            },
+            'Contracts from beyond' : {
+                base : BANK,
+                synergy : PORTAL
+            },
+            'Printing presses' : {
+                base : BANK,
+                synergy : FACTORY
+            },
+            'Paganism' : {
+                base : TEMPLE,
+                synergy : PORTAL
+            },
+            'God particle' : {
+                base : TEMPLE,
+                synergy : ANTI
+            },
+            'Arcane knowledge' : {
+                base : WIZARD,
+                synergy : ALCHEMY
+            },
+            'Magical botany' : {
+                base : FARM,
+                synergy : WIZARD
+            },
+            'Fossil fuels' : {
+                base : MINE,
+                synergy : SHIPMENT
+            },
+            'Primordial ores' : {
+                base : MINE,
+                synergy : ALCHEMY
+            },
+            'Gold fund' : {
+                base : BANK,
+                synergy : ALCHEMY
+            },
+            'Infernal crops' : {
+                base : FARM,
+                synergy : PORTAL
+            },
+            'Abysmal glimmer' : {
+                base : PORTAL,
+                synergy : PRISM
+            },
+            'Relativistic parsec-skipping' : {
+                base : SHIPMENT,
+                synergy : TIME
+            },
+            'Primeval glow' : {
+                base : TIME,
+                synergy : PRISM
+            },
+            'Extra physics funding' : {
+                base : BANK,
+                synergy : ANTI
+            },
+            'Chemical proficiency' : {
+                base : ALCHEMY,
+                synergy : ANTI
+            },
+            'Light magic' : {
+                base : WIZARD,
+                synergy : PRISM
+            },
+            'Mystical energies' : {
+                base : TEMPLE,
+                synergy : PRISM
+            },
+            'Shipyards' : {
+                base : FACTORY,
+                synergy : SHIPMENT
+            },
+            'Gemmed talismans' : {
+                base : MINE,
+                synergy : CHANCE
+            },
+            'Charm quarks' : {
+                base : ANTI,
+                synergy : CHANCE
+            },
+        },
+        constant: {
+            f_calculate: calculateConstantCps,
+            'Milk selector': 0,
+            'Communal brainsweep': 0,
+            'Ghostly biscuit': 0,
+            'Festive biscuit': 0,
+            'Lovesick biscuit': 0,
+            'Fool\'s biscuit': 0,
+            'Bunny biscuit': 0,
+            'Chocolate egg': 0,
+            'Cookie egg': 0,
+            'Golden switch [off]': 0,
+            'Golden switch [on]': 0,
+            'Golden cookie sound selector': 0,
+            'Background selector': 0,
 
-    const HEAVENLY_UPGRADES = {
-        'Heavenly chip secret' : 0.05,
-        'Heavenly cookie stand' : 0.2,
-        'Heavenly bakery' : 0.25,
-        'Heavenly confectionery' : 0.25,
-        'Heavenly key' : 0.25
-    };
+            'Golden goose egg': Infinity,
+            'Faberge egg': Infinity,
+            'Wrinklerspawn': Infinity,
+            'Omelette': Infinity,
+            'Century egg': Infinity,
+        },
+    }
 
-    const CURSOR_UPGRADES = {
-        'Thousand fingers' : 0.1,
-        'Million fingers' : 0.5,
-        'Billion fingers' : 5,
-        'Trillion fingers' : 50,
-        'Quadrillion fingers' : 500,
-        'Quintillion fingers' : 5000,
-        'Sextillion fingers' : 50000,
-        'Septillion fingers' : 500000,
-        'Octillion fingers' : 5000000,
-    };
-
-    const GRANDMA_UPGRADES = {
-        'Farmer grandmas' : {
-            gma_count: 1,
-            building: FARM
-        },
-        'Miner grandmas' : {
-            gma_count: 2,
-            building: MINE
-        },
-        'Worker grandmas' : {
-            gma_count: 3,
-            building: FACTORY
-        },
-        'Banker grandmas' : {
-            gma_count: 4,
-            building: BANK
-        },
-        'Priestess grandmas' : {
-            gma_count: 5,
-            building: TEMPLE
-        },
-        'Witch grandmas' : {
-            gma_count: 6,
-            building: WIZARD
-        },
-        'Cosmic grandmas' : {
-            gma_count: 7,
-            building: SHIPMENT
-        },
-        'Transmuted grandmas' : {
-            gma_count: 8,
-            building: ALCHEMY
-        },
-        'Altered grandmas' : {
-            gma_count: 9,
-            building: PORTAL
-        },
-        'Grandmas\' grandmas' : {
-            gma_count: 10,
-            building: TIME
-        },
-        'Antigrandmas' : {
-            gma_count: 11,
-            building: ANTI
-        },
-        'Rainbow grandmas' : {
-            gma_count: 12,
-            building: PRISM
-        },
-        'Lucky grandmas' : {
-            gma_count: 13,
-            building: CHANCE
-        }
-    };
-
-    const KITTEN_UPGRADES = {
-        'Kitten helpers' : 0.1,
-        'Kitten workers' : 0.125,
-        'Kitten engineers' : 0.15,
-        'Kitten overseers' : 0.175,
-        'Kitten managers' : 0.2,
-        'Kitten accountants' : 0.2,
-        'Kitten specialists' : 0.2,
-        'Kitten experts' : 0.2,
-        'Kitten consultants' : 0.2,
-        'Kitten assistants to the regional manager' : 0.2
-    };
-
-    const PRODUCTION_UPGRADES = {
-        'Specialized chocolate chips' : 0.01,
-        'Designer cocoa beans' : 0.02,
-        'Underworld ovens' : 0.03,
-        'Exotic nuts' : 0.04,
-        // EASTER EGGS
-        'Chicken egg' : 0.01,
-        'Duck egg' : 0.01,
-        'Turkey egg' : 0.01,
-        'Quail egg' : 0.01,
-        'Robin egg' : 0.01,
-        'Ostrich egg' : 0.01,
-        'Cassowary egg' : 0.01,
-        'Salmon roe' : 0.01,
-        'Frogspawn' : 0.01,
-        'Shark egg' : 0.01,
-        'Turtle egg' : 0.01,
-        'Ant larva' : 0.01,
-    };
-
-    const SYNERGY_UPGRADES = {
-        'Future almanacs' : {
-            base : FARM,
-            synergy : TIME
-        },
-        'Rain prayer' : {
-            base : FARM,
-            synergy : TEMPLE
-        },
-        'Seismic magic' : {
-            base : MINE,
-            synergy : WIZARD
-        },
-        'Asteroid mining' : {
-            base : MINE,
-            synergy : SHIPMENT
-        },
-        'Quantum electronics' : {
-            base : FACTORY,
-            synergy : ANTI
-        },
-        'Temporal overclocking' : {
-            base : FACTORY,
-            synergy : TIME
-        },
-        'Contracts from beyond' : {
-            base : BANK,
-            synergy : PORTAL
-        },
-        'Printing presses' : {
-            base : BANK,
-            synergy : FACTORY
-        },
-        'Paganism' : {
-            base : TEMPLE,
-            synergy : PORTAL
-        },
-        'God particle' : {
-            base : TEMPLE,
-            synergy : ANTI
-        },
-        'Arcane knowledge' : {
-            base : WIZARD,
-            synergy : ALCHEMY
-        },
-        'Magical botany' : {
-            base : FARM,
-            synergy : WIZARD
-        },
-        'Fossil fuels' : {
-            base : MINE,
-            synergy : SHIPMENT
-        },
-        'Primordial ores' : {
-            base : MINE,
-            synergy : ALCHEMY
-        },
-        'Gold fund' : {
-            base : BANK,
-            synergy : ALCHEMY
-        },
-        'Infernal crops' : {
-            base : FARM,
-            synergy : PORTAL
-        },
-        'Abysmal glimmer' : {
-            base : PORTAL,
-            synergy : PRISM
-        },
-        'Relativistic parsec-skipping' : {
-            base : SHIPMENT,
-            synergy : TIME
-        },
-        'Primeval glow' : {
-            base : TIME,
-            synergy : PRISM
-        },
-        'Extra physics funding' : {
-            base : BANK,
-            synergy : ANTI
-        },
-        'Chemical proficiency' : {
-            base : ALCHEMY,
-            synergy : ANTI
-        },
-        'Light magic' : {
-            base : WIZARD,
-            synergy : PRISM
-        },
-        'Mystical energies' : {
-            base : TEMPLE,
-            synergy : PRISM
-        },
-        'Shipyards' : {
-            base : FACTORY,
-            synergy : SHIPMENT
-        },
-        'Gemmed talismans' : {
-            base : MINE,
-            synergy : CHANCE
-        },
-        'Charm quarks' : {
-            base : ANTI,
-            synergy : CHANCE
-        }
-    };
-
-    const DO_NOT_PURCHASE = [
-        'Milk selector',
-        'Communal brainsweep',
-        'Ghostly biscuit',
-        'Festive biscuit',
-        'Lovesick biscuit',
-        'Fool\'s biscuit',
-        'Bunny biscuit',
-        'Chocolate egg',
-        'Cookie egg',
-        'Golden switch [off]',
-        'Golden switch [on]',
-        'Golden cookie sound selector',
-        'Background selector',
-    ];
-
-    const DO_PURCHASE = [
-        'Golden goose egg',
-        'Faberge egg',
-        'Wrinklerspawn',
-        'Omelette',
-        'Century egg'
-    ];
-
-    // return  (0.05 * Game.Objects[synergy.synergy].amount) * cpsForAllOfBuilding( Game.Objects[synergy.base] ) +
-    //        (0.001 * Game.Objects[synergy.base].amount) * cpsForAllOfBuilding( Game.Objects[synergy.synergy] );;
     function getSynergyBonus( buildingName ) {
         let synergyBonus = 0;
 
-        for( const synergy in SYNERGY_UPGRADES ) {
+        for( const synergy in UPGRADES.synergy ) {
+            if( typeof UPGRADES.synergy[synergy] === "function" ) continue;
             if( Game.Upgrades[synergy].bought === 1 ) {
-                if( SYNERGY_UPGRADES[synergy].base === buildingName ) {
-                    const building = Game.Objects[SYNERGY_UPGRADES[synergy].synergy];
-                    const other = Game.Objects[SYNERGY_UPGRADES[synergy].base];
+                if( UPGRADES.synergy[synergy].base === buildingName ) {
+                    const building = Game.Objects[UPGRADES.synergy[synergy].synergy];
+                    const other = Game.Objects[UPGRADES.synergy[synergy].base];
                     synergyBonus += cpsForAllOfBuilding(building) / (1 + 0.001 * other.amount) * 0.001;
-                } else if( SYNERGY_UPGRADES[synergy].synergy === buildingName ) {
-                    const building = Game.Objects[SYNERGY_UPGRADES[synergy].base];
-                    const other = Game.Objects[SYNERGY_UPGRADES[synergy].synergy];
+                } else if( UPGRADES.synergy[synergy].synergy === buildingName ) {
+                    const building = Game.Objects[UPGRADES.synergy[synergy].base];
+                    const other = Game.Objects[UPGRADES.synergy[synergy].synergy];
                     synergyBonus += cpsForAllOfBuilding(building) / (1 +  0.05 * other.amount) * 0.05;
                 }
             }
@@ -439,9 +449,10 @@
     function getCursorBonus() {
         let upgradeBonus = 0;
 
-        for( const cursorUpgrade in CURSOR_UPGRADES ) {
+        for( const cursorUpgrade in UPGRADES.cursor ) {
+            if( typeof UPGRADES.cursor[cursorUpgrade] === "function" ) continue;
             if( Game.Upgrades[cursorUpgrade].bought === 1 ) {
-                upgradeBonus += CURSOR_UPGRADES[cursorUpgrade];
+                upgradeBonus += UPGRADES.cursor[cursorUpgrade];
             }
         }
 
@@ -486,12 +497,17 @@
     }
 
     function calculateHeavenlyUpgradeCps( upgrade ) {
-        return Game.cookiesPs * ( Game.prestige / 100 ) * HEAVENLY_UPGRADES[upgrade.name];
+        return Game.cookiesPs * ( Game.prestige / 100 ) * UPGRADES.heavenly[upgrade.name];
     }
 
     function calculateDoubleUpgradeCps( upgrade ) {
-        const buildingName = DOUBLE_UPGRADES[upgrade.name];
+        const buildingName = UPGRADES.double[upgrade.name];
         return 2 * cpsForAllOfBuilding( Game.Objects[buildingName] );
+    }
+
+    function calculateMultiplierCps( upgrade ) {
+        const m = UPGRADES.multiplier[upgrade.name]
+        return cpsForAllOfBuilding( Game.Objects[m.base] ) * m.multiplier
     }
 
     function calculateCursorUpgradeCps( upgrade ) {
@@ -502,11 +518,11 @@
             }
         }
 
-        return Game.Objects[CURSOR].amount * count * CURSOR_UPGRADES[upgrade.name];
+        return Game.Objects[CURSOR].amount * count * UPGRADES.cursor[upgrade.name];
     }
 
     function calculateGrandmaUpgradeCps( upgrade ) {
-        const gma = GRANDMA_UPGRADES[upgrade.name];
+        const gma = UPGRADES.grandma[upgrade.name];
         const modifier = Math.pow( 0.01, Game.Objects[GRANDMA].amount / gma.gma_count );
         const gma_cps = cpsForAllOfBuilding( Game.Objects[GRANDMA] );
         const other_cps = cpsForAllOfBuilding( Game.Objects[gma.building] );
@@ -515,62 +531,50 @@
     }
 
     function calculateKittenUpgradeCps( upgrade ) {
-        return (1 + Game.milkProgress * KITTEN_UPGRADES[upgrade.name]) * Game.cookiesPs;
+        return (1 + Game.milkProgress * UPGRADES.kitten[upgrade.name]) * Game.cookiesPs;
     }
 
     function calculateProductionUpgradeCps( upgrade ) {
-        return (1 + PRODUCTION_UPGRADES[upgrade.name]) * Game.cookiesPs;
+        return (1 + UPGRADES.production[upgrade.name]) * Game.cookiesPs;
     }
 
     function calculateSynergyUpgradeCps( upgrade ) {
-        const synergy = SYNERGY_UPGRADES[upgrade.name];
+        const synergy = UPGRADES.synergy[upgrade.name];
         return ( 0.05 * Game.Objects[synergy.synergy].amount) * cpsForAllOfBuilding( Game.Objects[synergy.base] ) +
                (0.001 * Game.Objects[synergy.base].amount) * cpsForAllOfBuilding( Game.Objects[synergy.synergy] );
     }
 
-    function calculateDefaultUpgradeCps( upgrade ) {
-        return NaN;
+    function calculateConstantCps( upgrade ) {
+        return UPGRADES.constant[upgrade.name]
     }
 
     function calculateUpgradeCps() {
         const gameCps = Game.cookiesPs;
         let arr = [];
 
-        for( const upgradeName in Game.Upgrades ) {
+        for ( const upgradeName in Game.Upgrades ) {
 
             const upgrade = Game.Upgrades[upgradeName];
 
-            if( upgrade.unlocked === 1 && upgrade.bought === 0 ) {
-                let cps = 0;
+            if ( upgrade.unlocked === 1 && upgrade.bought === 0 ) {
+                let cps = NaN;
+                let found = false;
 
-                if( upgrade.pool === 'cookie' ) {
-                    cps = calculateCookieUpgradeCps( upgrade );
-                } else if( HEAVENLY_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateHeavenlyUpgradeCps( upgrade );
-                } else if( DOUBLE_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateDoubleUpgradeCps( upgrade );
-                } else if( CURSOR_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateCursorUpgradeCps( upgrade );
-                } else if( GRANDMA_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateGrandmaUpgradeCps( upgrade );
-                } else if( KITTEN_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateKittenUpgradeCps( upgrade );
-                } else if( PRODUCTION_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateProductionUpgradeCps( upgrade );
-                } else if( SYNERGY_UPGRADES.hasOwnProperty( upgradeName ) ) {
-                    cps = calculateSynergyUpgradeCps( upgrade );
-                } else if( 'Bingo center/Research facility' === upgradeName ) {
-                    cps = 4 * cpsForAllOfBuilding( Game.Objects[GRANDMA] );
-                } else if( DO_NOT_PURCHASE.includes( upgradeName ) ) {
-                    cps = 0;
-                } else if( DO_PURCHASE.includes( upgradeName ) ) {
-                    cps = Infinity;
-                } else {
-                    cps = calculateDefaultUpgradeCps( upgrade );
+                for ( const upgradeMetaProperty in UPGRADES ) {
+                    const upgradeMeta = UPGRADES[upgradeMetaProperty]
+                    if ( upgradeMeta.hasOwnProperty(upgradeName) ) {
+                        cps = upgradeMeta.f_calculate( upgrade );
+                        found = true;
+                        break;
+                    }
                 }
 
                 let cost = upgrade.getPrice();
-                if( DO_NOT_PURCHASE.includes( upgradeName ) && cost <= 0) {
+                if(
+                    UPGRADES.constant.hasOwnProperty(upgradeName) &&
+                    UPGRADES.constant[upgradeName] === 0 &&
+                    cost <= 0
+                ) {
                     cost = 1;
                 }
                 const costDiff = cost - Game.cookies;
@@ -710,6 +714,7 @@
     }
 
     let ready = false;
+    let cookieUpgradesInit = false;
 
     function drawTable() {
         const element = document.getElementById( 'game' );
@@ -734,6 +739,16 @@
 
     function tick() {
         if( ready ) {
+            if (!cookieUpgradesInit) {
+                for (const u in Game.Upgrades) {
+                    const upgrade = Game.Upgrades[u]
+                    if (upgrade.pool === 'cookie') {
+                        UPGRADES.cookies[u] = 0
+                    }
+                }
+                cookieUpgradesInit = true
+            }
+
             calculateAllCps();
             sortBuildings();
 
